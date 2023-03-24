@@ -3,11 +3,12 @@ import {Routes, Route} from 'react-router-dom';
 import {privateRoutes, publicRoutes} from "../router";
 import Login from "../pages/login";
 import Event from "../pages/event";
+import {useTypedSlector} from "../hooks/useTypedSlector";
 
 const AppRouter = () => {
-    const auth = true;
+    const {isAuth} = useTypedSlector(state => state.auth)
     return (
-        auth ?
+        isAuth ?
             <Routes>
                 {privateRoutes.map(route =>
                     <Route path={route.path}

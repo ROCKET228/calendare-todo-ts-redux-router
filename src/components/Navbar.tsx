@@ -2,17 +2,18 @@ import React, {FC} from 'react';
 import {Layout, Menu, Row} from "antd";
 import { useNavigate } from 'react-router-dom';
 import {RouteNames} from "../router";
+import {useTypedSlector} from "../hooks/useTypedSlector";
 
 
 
 const Navbar:FC = () => {
     const navigate = useNavigate();
-    const auth = true;
+    const {isAuth} = useTypedSlector(state => state.auth)
 
     return (
         <Layout.Header>
             <Row justify="end">
-                {auth
+                {isAuth
                     ?
                     <Menu theme="dark" mode="horizontal" selectable={false}>
                         <div style={{color: 'white'}}>Rocket</div>
