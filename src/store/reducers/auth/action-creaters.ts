@@ -5,6 +5,7 @@ import axios from "axios";
 import { ThunkAction } from 'redux-thunk';
 import {AnyAction} from "redux";
 import { ThunkDispatch } from 'redux-thunk';
+import UsersService from "../../../api/UsersService";
 
 export const  AuthActionCreators = {
     setUser: (user: IUser): SetUserAction => ({type: AuthActionEnum.SET_USER, payload: user}),
@@ -15,7 +16,7 @@ export const  AuthActionCreators = {
         try {
             dispatch(AuthActionCreators.setIsLoading(true));
             setTimeout(async () => {
-                const response = await axios.get<IUser[]>('./users.json')
+                const response = await UsersService.getUsers()
                 const mockUser = response.data.find(user => user.username === username && user.password === password);
                 if (mockUser) {
                     localStorage.setItem('auth', 'true');
