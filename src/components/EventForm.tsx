@@ -3,7 +3,7 @@ import {Button, DatePicker, Form, Input, Row, Select} from "antd";
 import {rules} from "../utils/rules";
 import {IUser} from "../models/IUser";
 import {IEvent} from "../models/IEvent";
-import dayjs, {Dayjs} from 'dayjs';
+import  {Dayjs} from 'dayjs';
 import {formatDate} from "../utils/date";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
