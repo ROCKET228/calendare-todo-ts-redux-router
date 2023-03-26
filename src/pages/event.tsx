@@ -4,14 +4,20 @@ import {Button, Modal, Row} from "antd";
 import EventForm from "../components/EventForm";
 import {useAction} from "../hooks/useAction";
 import {useTypedSelector} from "../hooks/useTypedSelector";
+import {IEvent} from "../models/IEvent";
 
 const Event:FC = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const {fetchGuests} =useAction()
+    const {fetchGuests, createEvent} =useAction()
     const {guest} = useTypedSelector(state => state.event)
     useEffect(() => {
         fetchGuests()
     },[])
+
+    const addNewEvent = (event: IEvent) => {
+        setModalVisible(false);
+        createEvent(event)
+    }
 
     return (
         <div>
@@ -27,6 +33,7 @@ const Event:FC = () => {
             >
                 <EventForm
                     guests={guest}
+                    submit={addNewEvent}
                 />
             </Modal>
         </div>
