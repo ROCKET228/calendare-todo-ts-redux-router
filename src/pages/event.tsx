@@ -8,7 +8,7 @@ import {IEvent} from "../models/IEvent";
 
 const Event:FC = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const {fetchGuests, createEvent} =useAction()
+    const {fetchGuests, createEvent, fetchEvents} =useAction()
     const {guest} = useTypedSelector(state => state.event)
     useEffect(() => {
         fetchGuests()

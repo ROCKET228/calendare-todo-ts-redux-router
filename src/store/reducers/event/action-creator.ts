@@ -26,5 +26,16 @@ export const EventActionCreators = {
         }catch (e){
             console.log(e)
         }
+    },
+    fetchEvents: (guestName: string, authorName: string) => async (dispatch: AppDispatch) => {
+        try{
+            const events = localStorage.getItem("events") || '[]'
+            const json = JSON.parse(events) as IEvent[];
+            const currentUserEvent = json.filter(ev => ev.author === authorName || ev.guest === guestName);
+            dispatch(EventActionCreators.setEvent(currentUserEvent))
+        }
+        catch (e){
+
+        }
     }
 }
