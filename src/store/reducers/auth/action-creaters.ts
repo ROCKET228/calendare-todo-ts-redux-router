@@ -1,7 +1,6 @@
 import {AuthActionEnum, SetAuthAction, SetErrorAction, SetIsLoadingAction, SetUserAction} from "./types";
 import {IUser} from "../../../models/IUser";
 import {AppDispatch, RootState} from "../../index";
-import axios from "axios";
 import { ThunkAction } from 'redux-thunk';
 import {AnyAction} from "redux";
 import { ThunkDispatch } from 'redux-thunk';
