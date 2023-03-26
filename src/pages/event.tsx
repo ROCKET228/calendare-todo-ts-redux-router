@@ -10,8 +10,12 @@ const Event:FC = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const {fetchGuests, createEvent, fetchEvents} =useAction()
     const {guest} = useTypedSelector(state => state.event)
+    const {user} = useTypedSelector(state => state.auth)
+
+    
     useEffect(() => {
         fetchGuests()
+        fetchEvents(user.username)
     },[])
 
     const addNewEvent = (event: IEvent) => {
